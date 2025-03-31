@@ -3,7 +3,7 @@ import './AddClothes.css';
 const AddClothes = () => {
   return (
     <>
-      <div className="modal__input">
+      <label className="modal__input">
         Name
         <input
           id="modal__input-name"
@@ -15,10 +15,10 @@ const AddClothes = () => {
           maxLength="30"
           required
         />
-      </div>
+      </label>
       <span className=""></span>
       {/* Image URL Input */}
-      <div className="modal__input">
+      <label className="modal__input">
         Image
         <input
           id="modal__input-url"
@@ -28,7 +28,7 @@ const AddClothes = () => {
           placeholder="Image URL"
           required
         />
-      </div>
+      </label>
       <span className=""></span>
       {/* Select weather and radio inputs */}
       <p className="modal__radio-title">Select weather type:</p>

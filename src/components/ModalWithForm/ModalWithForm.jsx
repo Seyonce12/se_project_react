@@ -26,9 +26,9 @@ const ModalWithForm = ({
           <img src={exitButton} alt="Exit button" />
         </button>
         <h2 className="modal__title">{title}</h2>
-        <form className="modal__form" id="" onSubmit={handleSubmitForm}>
+        <form className="modal__form" onSubmit={handleSubmitForm}>
           <fieldset className="modal__fieldset">{children}</fieldset>
-          <span className="modal__error"></span>
+          <span className="modal__error" />
           <button
             type="submit"
             className="modal__submit"

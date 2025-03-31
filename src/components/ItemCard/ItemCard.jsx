@@ -2,8 +2,8 @@ import './ItemCard.css';
 
 const ItemCard = ({ data, onSelectCard }) => {
   return (
-    <ul className="clothing__cards-wrapper">
-      <li
+    <article className="clothing__cards-wrapper">
+      <div
         className="clothing__card-items"
         id={`clothing__card-items_${data.name}`}
       >
@@ -15,8 +15,8 @@ const ItemCard = ({ data, onSelectCard }) => {
           src={data.link}
           onClick={() => onSelectCard(data)}
         />
-      </li>
-    </ul>
+      </div>
+    </article>
   );
 };
 

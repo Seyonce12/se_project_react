@@ -34,9 +34,7 @@ function App() {
         const sunsetData = data.sys.sunset;
         setSunset(sunsetData);
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch(console.error);
   }, []);
 
   const timeOfDay = () => {
@@ -48,17 +46,23 @@ function App() {
   };
   
   /* Modal functions */
+  const handleCloseModal = () => {
+    setModalOpened('');
+  };
+
   useEffect(() => {
+    if (!modalOpened) return; // stop the effect not to add the listener if modal is closed
+    
     const handleEscClose = (evt) => {
       if (evt.key === 'Escape') {
-        setModalOpened('');
+        handleCloseModal();
       }
     };
     window.addEventListener('keydown', handleEscClose);
     return () => {
       window.removeEventListener('keydown', handleEscClose);
     };
-  }, []);
+  }, [modalOpened]); // watch modalOpened here
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -81,11 +85,7 @@ function App() {
     setClothingItems([newItem, ...clothingItems]);
     
     // Close the modal
-    setModalOpened('');
-  };
-
-  const handleCloseModal = () => {
-    setModalOpened('');
+    handleCloseModal();
   };
 
   const handleOpenModal = () => {
@@ -94,38 +94,36 @@ function App() {
 
   /* Item Card Image Modal functions */
   const handleSelectedCard = (card) => {
-    setModalOpened('open');
+    setModalOpened('item-modal');
     setSelectedCard(card);
   };
   
   return (
-    <>
-      <div className="App">
-        <Header locationData={location} openAddClothesModal={handleOpenModal} />
-        <Main
-          weatherTemp={temp}
-          weatherType={weatherType}
-          onSelectCard={handleSelectedCard}
-          timeOfDay={timeOfDay()}
-          clothingItems={clothingItems}
-        />
-        <Footer />
-        {modalOpened === 'new-clothes-modal' && (
-          <ModalWithForm
-            title="New clothes"
-            name="clothes"
-            buttonText="Add clothes"
-            onClose={handleCloseModal}
-            handleSubmitForm={handleSubmit}
-          >
-            <AddClothes />
-          </ModalWithForm>
-        )}
-        {modalOpened === 'open' && (
-          <ItemModal onClose={handleCloseModal} selectedCard={selectedCard} />
-        )}
-      </div>
-    </>
+    <div className="App">
+      <Header locationData={location} openAddClothesModal={handleOpenModal} />
+      <Main
+        weatherTemp={temp}
+        weatherType={weatherType}
+        onSelectCard={handleSelectedCard}
+        timeOfDay={timeOfDay()}
+        clothingItems={clothingItems}
+      />
+      <Footer />
+      {modalOpened === 'new-clothes-modal' && (
+        <ModalWithForm
+          title="New clothes"
+          name="clothes"
+          buttonText="Add clothes"
+          onClose={handleCloseModal}
+          handleSubmitForm={handleSubmit}
+        >
+          <AddClothes />
+        </ModalWithForm>
+      )}
+      {modalOpened === 'item-modal' && (
+        <ItemModal onClose={handleCloseModal} selectedCard={selectedCard} />
+      )}
+    </div>
   );
 }
 
