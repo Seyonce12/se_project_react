@@ -25,7 +25,7 @@ const Header = ({ locationData, openAddClothesModal }) => {
         >
           + Add Clothes
         </button>
-        <p className="avatar__name">awesome creator</p>
+        <p className="avatar__name">Sabrina Florence</p>
         <img alt="avatar" src={avatar} className="avatar__picture" />
       </section>
     </header>
