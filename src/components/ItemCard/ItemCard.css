@@ -1,0 +1,98 @@
+.card {
+  width: 325px;
+  height: 328px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.card__header {
+  position: relative;
+  top: 18px;
+  left: 32px;
+  z-index: 1;
+}
+
+.card__name {
+  font-family: 'Familjen Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: rgba(0, 0, 0, 0.6);
+  margin: 0;
+}
+
+.card__image {
+  position: relative;
+  top: 18px;
+  width: 325px;
+  height: 328px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.clothing {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 19px;
+}
+
+.clothing__cards-wrapper {
+  list-style: none;
+  justify-content: space-around;
+  margin: 0;
+  padding: 0;
+  width: 328px;
+  border-radius: 5%;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.clothing__card-items {
+  display: flex;
+  justify-content: center;
+  max-height: 328px;
+}
+
+.clothing-card-title {
+  position: absolute;
+  margin: 16px 0 0 0;
+  padding: 0 12px;
+  text-align: center;
+  font-family: 'Familjen Grotesk', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  color: rgba(0, 0, 0, 0.6);
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+.clothing-card-individual {
+  border-radius: 5%;
+  width: 328px;
+  height: 328px;
+}
+
+.clothing-card-individual:hover {
+  cursor: pointer;
+}
+
+#clothing__card-items_Sneakers {
+  position: relative;
+  width: 328px;
+  height: 328px;
+  background-color: #e9e9e9;
+  border-radius: 5%;
+}
+
+#clothing-card-individual_Sneakers {
+  position: absolute;
+  top: 51px;
+  left: 51px;
+  width: 226px;
+  height: 226px;
+}

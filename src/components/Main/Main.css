@@ -1,0 +1,35 @@
+.main {
+  padding: 0 40px;
+}
+
+.main__cards {
+  margin-top: 40px;
+}
+
+.main__info {
+  margin-bottom: 34px;
+}
+
+.main__description-container {
+  margin: 0;
+  font-family: 'Familjen Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 25px;
+}
+
+.main__items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.main__title {
+  margin: 40px 0px 34px 0px;
+  font-family: 'Familjen Grotesk', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+}

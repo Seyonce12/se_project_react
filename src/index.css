@@ -1,0 +1,35 @@
+@font-face {
+  font-family: 'Familjen Grotesk';
+  src: url('/fonts/FamiljenGrotesk-Regular.ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Familjen Grotesk';
+  src: url('/fonts/FamiljenGrotesk-Bold.ttf');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Familjen Grotesk';
+  src: url('/fonts/FamiljenGrotesk-Medium.ttf');
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* Reset styles to create clean slate */
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f3f3f3;
+  font-family: 'Familjen Grotesk', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* We'll use the main css files in each component for styling */

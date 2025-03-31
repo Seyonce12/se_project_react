@@ -1,0 +1,96 @@
+@font-face {
+  font-family: 'Familjen Grotesk';
+  src: url('/fonts/FamiljenGrotesk-Regular.ttf');
+}
+
+.header {
+  font-family: 'Familjen Grotesk', sans-serif;
+  font-style: normal;
+  display: flex;
+  margin: 32px 0 28px 0;
+  justify-content: space-between;
+  color: #000;
+  font-size: 20px;
+  font-weight: 500;
+  height: 40px;
+  padding: 0 40px;
+}
+
+.header__section {
+  display: flex;
+  align-items: center;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                             Left side of header                            */
+/* -------------------------------------------------------------------------- */
+.header__section-left {
+  gap: 24px;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                            Right side of header                            */
+/* -------------------------------------------------------------------------- */
+.header__section-right {
+  gap: 12px;
+}
+
+.header__add-clothes-button {
+  font-family: 'Familjen Grotesk', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  /* underline */
+  /* text-decoration: underline; */
+  line-height: 20px;
+  color: #000;
+  margin-right: 15px;
+  width: 154px;
+  height: 36px;
+  border: none;
+  border-radius: 4px;
+  /* background-color: #000; */
+}
+
+.header__add-clothes-button:hover {
+  cursor: pointer;
+  opacity: 60%;
+}
+
+.avatar__picture {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background-color: #000;
+}
+
+.header__logo {
+  width: 89px;
+  height: 40px;
+}
+
+.header__logo-date {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.header__date {
+  font-family: 'Familjen Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.header__add-clothes-btn {
+  font-family: 'Familjen Grotesk', sans-serif;
+  font-size: 20px;
+  line-height: 24px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  opacity: 1;
+}
+
+.header__add-clothes-btn:hover {
+  opacity: 0.6;
+}
