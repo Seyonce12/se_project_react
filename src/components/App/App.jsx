@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react';
-
 import './App.css';
-import Header from './components/Header/Header';
-import Main from './components/Main/Main';
-import Footer from './components/Footer/Footer';
-import ModalWithForm from './components/ModalWithForm/ModalWithForm';
-import ItemModal from './components/ItemModal/ItemModal';
-import AddClothes from './components/AddClothes/AddClothes';
-import { getWeather } from './utils/weatherApi';
-import { defaultClothingItems } from './utils/constants';
+import Header from '../Header/Header';
+import Main from '../Main/Main';
+import Footer from '../Footer/Footer';
+import ModalWithForm from '../ModalWithForm/ModalWithForm';
+import ItemModal from '../ItemModal/ItemModal';
+import AddClothes from '../AddClothes/AddClothes';
+import { getWeather } from '../../utils/weatherApi';
+import { defaultClothingItems } from '../../utils/constants';
 
 function App() {
   const [modalOpened, setModalOpened] = useState('');
@@ -19,7 +18,6 @@ function App() {
   const [sunrise, setSunrise] = useState();
   const [sunset, setSunset] = useState();
   const [clothingItems, setClothingItems] = useState(defaultClothingItems || []);
-
   const dateNow = Date.now() * 0.001;
 
   useEffect(() => {
@@ -57,7 +55,6 @@ function App() {
       }
     };
     window.addEventListener('keydown', handleEscClose);
-
     return () => {
       window.removeEventListener('keydown', handleEscClose);
     };
@@ -124,7 +121,6 @@ function App() {
             <AddClothes />
           </ModalWithForm>
         )}
-
         {modalOpened === 'open' && (
           <ItemModal onClose={handleCloseModal} selectedCard={selectedCard} />
         )}
