@@ -1,0 +1,7 @@
+/* AddItemModal.css */
+/* Most styling is inherited from ModalWithForm and AddClothes components */
+
+.add-item-modal {
+  /* Add any specific styling for the AddItemModal component here */
+  /* This file is required for the component to import its CSS */
+}

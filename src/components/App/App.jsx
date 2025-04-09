@@ -7,6 +7,7 @@ import Footer from '../Footer/Footer';
 import ModalWithForm from '../ModalWithForm/ModalWithForm';
 import ItemModal from '../ItemModal/ItemModal';
 import AddClothes from '../AddClothes/AddClothes';
+import AddItemModal from '../AddItemModal/AddItemModal';
 import Profile from '../Profile/Profile';
 import { getWeather } from '../../utils/weatherApi';
 import { defaultClothingItems } from '../../utils/constants';
@@ -200,15 +201,11 @@ function App() {
           </Routes>
           <Footer />
           {modalOpened === 'new-clothes-modal' && (
-            <ModalWithForm
-              title="New clothes"
-              name="clothes"
-              buttonText="Add clothes"
+            <AddItemModal 
+              isOpen={true}
               onClose={handleCloseModal}
-              handleSubmitForm={handleSubmit}
-            >
-              <AddClothes />
-            </ModalWithForm>
+              onAddItem={handleSubmit}
+            />
           )}
 
           {modalOpened === 'item-modal' && (
