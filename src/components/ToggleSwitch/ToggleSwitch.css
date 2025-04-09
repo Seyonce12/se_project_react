@@ -2,57 +2,100 @@
   display: flex;
   position: relative;
   margin-right: 20px;
+  width: 60px;
+  height: 30px;
 }
 
 .switch__box {
   border-radius: 25px;
-  border: 2px solid black;
-  width: 50px;
+  border: none;
+  width: 60px;
   height: 30px;
   appearance: none;
+  background-color: #f5f5f5;
 }
 
 .switch__slider {
-  border-radius: 20px;
-  width: 30px;
+  border-radius: 25px;
+  width: 60px;
   height: 30px;
-  background-color: black;
-  color: white;
-  text-align: center;
+  background-color: #f5f5f5;
   cursor: pointer;
   position: absolute;
   transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #7e7e7e;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .switch__slider-F {
   top: 0px;
-  left: 2px;
+  left: 0px;
 }
 
 .switch__slider-C {
   top: 0px;
-  left: 20px;
+  left: 0px;
 }
 
 .switch__active {
   font-weight: bold;
-  font-size: 16px;
 }
 
+/* Add a pseudo-element for the black circle */
+.switch__slider::before {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: black;
+  top: -1px;
+  left: -1px;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+/* Move the black circle when toggled */
+input:checked + .switch__slider::before {
+  transform: translateX(30px);
+  background-color: #7e7e7e;
+}
+
+/* Change text colors when toggled */
+/* When C is selected (checked), F becomes gray */
+input:checked ~ .switch__temp-F {
+  color: #7e7e7e;
+}
+
+/* When C is selected (checked), C becomes white */
+input:checked ~ .switch__temp-C {
+  color: white;
+}
+
+/* Default state (F selected): F is white */
 .switch__temp-F {
   position: absolute;
-  top: -12px;
-  left: 9px;
-  color: #fff;
+  top: 5px;
+  left: 12px;
+  color: white;
   margin: 0;
+  font-size: 18px;
   transition: all 0.3s ease;
+  z-index: 2;
 }
 
+/* Default state (F selected): C is gray */
 .switch__temp-C {
   position: absolute;
-  top: -12px;
-  left: 30px;
-  color: #fff;
+  top: 5px;
+  right: 12px;
+  color: #7e7e7e;
   margin: 0;
+  font-size: 18px;
   transition: all 0.3s ease;
+  z-index: 2;
 }
