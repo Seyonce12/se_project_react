@@ -5,7 +5,7 @@ import path from 'path'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/se_project_react/',
+  base: '/',
   server: {
     port: 3000,
   },
