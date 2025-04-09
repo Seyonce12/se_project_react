@@ -9,6 +9,7 @@ import ItemModal from './components/ItemModal/ItemModal';
 import AddClothes from './components/AddClothes/AddClothes';
 import { getWeather } from './utils/weatherApi';
 import { defaultClothingItems } from './utils/constants';
+import { CurrentTemperatureUnitContext } from './contexts/CurrentTemperatureUnitContext';
 
 function App() {
   const [modalOpened, setModalOpened] = useState('');
@@ -19,6 +20,7 @@ function App() {
   const [sunrise, setSunrise] = useState();
   const [sunset, setSunset] = useState();
   const [clothingItems, setClothingItems] = useState(defaultClothingItems || []);
+  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState('F');
 
   const dateNow = Date.now() * 0.001;
 
@@ -101,9 +103,17 @@ function App() {
     setSelectedCard(card);
   };
   
+  // Toggle temperature unit handler
+  const handleToggleSwitchChange = () => {
+    setCurrentTemperatureUnit(currentTemperatureUnit === 'F' ? 'C' : 'F');
+  };
+  
   return (
     <>
-      <div className="App">
+      <CurrentTemperatureUnitContext.Provider
+        value={{ currentTemperatureUnit, handleToggleSwitchChange }}
+      >
+        <div className="App">
         <Header locationData={location} openAddClothesModal={handleOpenModal} />
         <Main
           weatherTemp={temp}
@@ -128,7 +138,8 @@ function App() {
         {modalOpened === 'open' && (
           <ItemModal onClose={handleCloseModal} selectedCard={selectedCard} />
         )}
-      </div>
+        </div>
+      </CurrentTemperatureUnitContext.Provider>
     </>
   );
 }

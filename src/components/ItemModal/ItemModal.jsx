@@ -1,7 +1,7 @@
 import './ItemModal.css';
 import exitButton from '../../images/modalexit.svg';
 
-const ItemModal = ({ onClose, selectedCard }) => {
+const ItemModal = ({ onClose, selectedCard, onDeleteClick }) => {
   const handleModalClick = (e) => {
     if (e.target === e.currentTarget) {
       onClose(e);
@@ -23,10 +23,17 @@ const ItemModal = ({ onClose, selectedCard }) => {
           <img
             className="item__modal-image"
             alt={selectedCard.name}
-            src={selectedCard.link}
+            src={selectedCard.link || selectedCard.imageUrl}
           />
         </div>
         <p className="item__modal-weather">Weather: {selectedCard.weather}</p>
+        <button 
+          className="item__modal-delete-button" 
+          type="button" 
+          onClick={onDeleteClick}
+        >
+          Delete item
+        </button>
       </div>
     </section>
   );

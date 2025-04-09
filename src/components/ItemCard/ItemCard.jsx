@@ -12,7 +12,7 @@ const ItemCard = ({ data, onSelectCard }) => {
           className="clothing-card-individual"
           id={`clothing-card-individual_${data.name}`}
           alt={data.name}
-          src={data.link}
+          src={data.link || data.imageUrl}
           onClick={() => onSelectCard(data)}
         />
       </div>

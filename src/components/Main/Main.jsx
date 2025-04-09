@@ -1,14 +1,29 @@
 import './Main.css';
+import { useContext } from 'react';
+import { CurrentTemperatureUnitContext } from '../../contexts/CurrentTemperatureUnitContext';
 import WeatherCard from '../WeatherCard/WeatherCard';
 import ItemCard from '../ItemCard/ItemCard';
 
 function Main({ weatherTemp, weatherType, onSelectCard, timeOfDay, clothingItems }) {
+  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
+  
+  // Handle both object and number formats for weatherTemp
+  const temperature = typeof weatherTemp === 'object' 
+    ? weatherTemp 
+    : {
+        F: Math.round(weatherTemp),
+        C: Math.round((weatherTemp - 32) * 5/9)
+      };
+  
   const weatherFilter = () => {
-    if (weatherTemp >= 86) {
+    // Always use Fahrenheit for determining clothing type regardless of display unit
+    const tempInF = typeof weatherTemp === 'object' ? weatherTemp.F : weatherTemp;
+    
+    if (tempInF >= 86) {
       return 'hot';
-    } else if (weatherTemp >= 66 && weatherTemp <= 85) {
+    } else if (tempInF >= 66 && tempInF <= 85) {
       return 'warm';
-    } else if (weatherTemp <= 65) {
+    } else if (tempInF <= 65) {
       return 'cold';
     }
   };
@@ -26,7 +41,7 @@ function Main({ weatherTemp, weatherType, onSelectCard, timeOfDay, clothingItems
         weatherTemp={weatherTemp}
       />
       <div className="main__title">
-        Today is {Math.round(weatherTemp)}°F / You may want to wear:
+        Today is {temperature[currentTemperatureUnit]}°{currentTemperatureUnit} / You may want to wear:
       </div>
       <section className="clothing">
         {filterCards.map((data) => (

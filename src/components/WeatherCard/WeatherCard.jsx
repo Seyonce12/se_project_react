@@ -1,4 +1,6 @@
 import './WeatherCard.css';
+import { useContext } from 'react';
+import { CurrentTemperatureUnitContext } from '../../contexts/CurrentTemperatureUnitContext';
 import daySunny from "../../images/DaySunny.svg";
 import dayCloudy from "../../images/DayCloudy.svg";
 import dayRain from "../../images/DayRain.svg";
@@ -13,6 +15,15 @@ import nightSnow from "../../images/NightSnow.svg";
 import nightFog from "../../images/NightFog.svg";
 
 const WeatherCard = ({ day, type, weatherTemp = 0 }) => {
+  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
+  
+  // Handle both object and number formats for weatherTemp
+  const temperature = typeof weatherTemp === 'object' 
+    ? weatherTemp 
+    : {
+        F: Math.round(weatherTemp),
+        C: Math.round((weatherTemp - 32) * 5/9)
+      };
   // Create mapping for weather icons
   const weatherImage = () => {
     if (day) {
@@ -63,7 +74,7 @@ const WeatherCard = ({ day, type, weatherTemp = 0 }) => {
 
   return (
     <section className="weather">
-      <div className="weather__temp">{Math.round(weatherTemp)}°F</div>
+      <div className="weather__temp">{temperature[currentTemperatureUnit]}°{currentTemperatureUnit}</div>
       <img
         className="weather__image"
         alt={type}
