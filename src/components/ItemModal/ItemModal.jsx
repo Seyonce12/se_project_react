@@ -30,7 +30,7 @@ const ItemModal = ({ onClose, selectedCard, onDeleteClick }) => {
         <button 
           className="item__modal-delete-button" 
           type="button" 
-          onClick={onDeleteClick}
+          onClick={() => onDeleteClick(selectedCard)}
         >
           Delete item
         </button>

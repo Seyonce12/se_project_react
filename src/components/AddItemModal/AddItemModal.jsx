@@ -19,7 +19,9 @@ const AddItemModal = ({ isOpen, onClose, onAddItem }) => {
       imageUrl
     };
     
-    onAddItem(newItem);
+    // Pass the new item to parent component
+    // Modal will be closed only after successful server response
+    onAddItem(newItem, e);
   };
 
   return (

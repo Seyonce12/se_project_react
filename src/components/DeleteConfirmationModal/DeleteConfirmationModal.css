@@ -4,7 +4,8 @@
   position: relative;
   background-color: white;
   border-radius: 20px;
-  padding: 28px 28px;
+  padding: 28px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .delete-modal__content {
@@ -12,7 +13,6 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 20px 0;
 }
 
 .delete-modal__title {
@@ -20,15 +20,16 @@
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
-  margin: 0 0 24px;
+  margin: 0 0 16px;
+  color: #000;
 }
 
-.delete-modal__subtitle {
+.delete-modal__text {
   font-family: 'Familjen Grotesk', sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 20px;
-  margin: 0 0 40px;
+  margin: 0 0 24px;
   color: #666;
 }
 
@@ -49,6 +50,7 @@
   cursor: pointer;
   border: none;
   min-width: 124px;
+  transition: opacity 0.3s ease;
 }
 
 .delete-modal__button-cancel {
@@ -64,4 +66,31 @@
 
 .delete-modal__button:hover {
   opacity: 0.8;
+}
+
+.delete-modal__confirm-text {
+  font-family: 'Familjen Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: #FF4D4D;
+  cursor: pointer;
+  margin: 0 0 12px;
+}
+
+.delete-modal__confirm-text:hover {
+  text-decoration: underline;
+}
+
+.delete-modal__cancel-text {
+  font-family: 'Familjen Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: #000;
+  cursor: pointer;
+}
+
+.delete-modal__cancel-text:hover {
+  text-decoration: underline;
 }

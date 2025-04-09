@@ -20,22 +20,20 @@ const DeleteConfirmationModal = ({ onClose, onConfirm }) => {
           <img src={exitButton} alt="Close button" />
         </button>
         <div className="delete-modal__content">
-          <p className="delete-modal__title">Are you sure you want to delete this item?</p>
-          <p className="delete-modal__subtitle">This action is irreversible.</p>
-          <div className="delete-modal__buttons">
-            <button 
-              className="delete-modal__button delete-modal__button-cancel" 
-              onClick={onClose}
-            >
-              Cancel
-            </button>
-            <button 
-              className="delete-modal__button delete-modal__button-confirm" 
-              onClick={onConfirm}
-            >
-              Yes, delete item
-            </button>
-          </div>
+          <h2 className="delete-modal__title">Are you sure you want to delete this item?</h2>
+          <p className="delete-modal__text">This action is irreversible.</p>
+          <p 
+            className="delete-modal__confirm-text" 
+            onClick={onConfirm}
+          >
+            Yes, delete item
+          </p>
+          <p 
+            className="delete-modal__cancel-text" 
+            onClick={onClose}
+          >
+            Cancel
+          </p>
         </div>
       </div>
     </section>

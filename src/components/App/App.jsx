@@ -98,37 +98,35 @@ function App() {
     };
   }, [modalOpened]); // watch modalOpened here
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    
-    // Get form values
-    const form = e.target;
-    const name = form.elements.name.value;
-    const imageUrl = form.elements.link.value;
-    const weather = form.elements.weather.value;
-    
-    // Create new clothing item
-    const newItem = {
-      name,
-      weather,
-      imageUrl
-    };
+  const handleSubmit = (item, e) => {
+    if (e && e.preventDefault) {
+      e.preventDefault();
+    }
     
     // Add item to the server and update state
-    addItem(newItem)
+    // Only close modal after successful response
+    addItem(item)
       .then((item) => {
         setClothingItems([item, ...clothingItems]);
+        // Close modal only after successful response
         handleCloseModal();
       })
       .catch((err) => {
         console.error(err);
-        // Fallback for when server is not available
-        const fallbackItem = {
-          ...newItem,
-          _id: Date.now().toString()
-        };
-        setClothingItems([fallbackItem, ...clothingItems]);
-        handleCloseModal();
+        // Don't close modal on error so user can try again
+        // Only use fallback if it's a network error, not a server error
+        if (err.includes('Error: 500')) {
+          alert('Server error: Could not add item. Please try again.');
+        } else {
+          // Fallback for when server is not available (network error)
+          const fallbackItem = {
+            ...item,
+            _id: Date.now().toString()
+          };
+          setClothingItems([fallbackItem, ...clothingItems]);
+          // Close modal only for network errors where we used the fallback
+          handleCloseModal();
+        }
       });
   };
 
