@@ -1,0 +1,41 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.modal__container {
+  position: relative;
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 28px;
+  box-sizing: border-box;
+}
+
+.modal__exit {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.modal__close {
+  background: transparent url('../../images/modalexit.svg') no-repeat;
+  width: 16px;
+  height: 16px;
+  border: none;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}

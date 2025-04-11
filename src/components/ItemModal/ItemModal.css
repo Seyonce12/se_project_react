@@ -40,7 +40,8 @@
   color: rgba(0, 0, 0, 0.6);
 }
 
-.item__modal-container {
+.item__modal-container, 
+.modal_type_item .modal__container {
   display: flex;
   justify-content: flex-start;
   padding: 0;

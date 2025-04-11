@@ -1,5 +1,6 @@
 import './ModalWithForm.css';
-import exitButton from '../../images/modalexit.svg';
+import Modal from '../Modal/Modal';
+import useModalClose from '../../hooks/useModalClose';
 
 const ModalWithForm = ({
   children,
@@ -8,36 +9,25 @@ const ModalWithForm = ({
   buttonText,
   onClose,
   handleSubmitForm,
+  isOpen = true
 }) => {
-  const handleModalClick = (e) => {
-    if (e.target === e.currentTarget) {
-      onClose(e);
-    }
-  };
+  // Use our custom hook
+  useModalClose(isOpen, onClose);
 
   return (
-    <section className={`modal modal_type_${name}`} onClick={handleModalClick}>
-      <div className="modal__container">
+    <Modal name={name} onClose={onClose}>
+      <h2 className="modal__title">{title}</h2>
+      <form className="modal__form" onSubmit={handleSubmitForm}>
+        <fieldset className="modal__fieldset">{children}</fieldset>
+        <span className="modal__error" />
         <button
-          className="modal__exit"
-          type="button"
-          onClick={onClose}
+          type="submit"
+          className="modal__submit"
         >
-          <img src={exitButton} alt="Exit button" />
+          {buttonText}
         </button>
-        <h2 className="modal__title">{title}</h2>
-        <form className="modal__form" onSubmit={handleSubmitForm}>
-          <fieldset className="modal__fieldset">{children}</fieldset>
-          <span className="modal__error" />
-          <button
-            type="submit"
-            className="modal__submit"
-          >
-            {buttonText}
-          </button>
-        </form>
-      </div>
-    </section>
+      </form>
+    </Modal>
   );
 };
 

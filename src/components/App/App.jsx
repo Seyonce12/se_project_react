@@ -113,19 +113,8 @@ function App() {
       })
       .catch((err) => {
         console.error(err);
-        // Don't close modal on error so user can try again
-        // Only use fallback if it's a network error, not a server error
         if (err.includes('Error: 500')) {
           alert('Server error: Could not add item. Please try again.');
-        } else {
-          // Fallback for when server is not available (network error)
-          const fallbackItem = {
-            ...item,
-            _id: Date.now().toString()
-          };
-          setClothingItems([fallbackItem, ...clothingItems]);
-          // Close modal only for network errors where we used the fallback
-          handleCloseModal();
         }
       });
   };
@@ -157,72 +146,64 @@ function App() {
         handleCloseModal();
         setItemToDelete(null);
       })
-      .catch((err) => {
-        console.error(err);
-        // Fallback for when server is not available
-        setClothingItems(clothingItems.filter(item => item._id !== itemToDelete._id));
-        handleCloseModal();
-        setItemToDelete(null);
-      });
+      .catch(console.error);
   };
   
   return (
-    <>
-      <CurrentTemperatureUnitContext.Provider
-        value={{ currentTemperatureUnit, handleToggleSwitchChange }}
-      >
-        <div className="page">
-          <Header locationData={location} openAddClothesModal={handleOpenModal} />
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <Main
-                  weatherTemp={temp}
-                  weatherType={weatherType}
-                  onSelectCard={handleSelectedCard}
-                  timeOfDay={timeOfDay()}
-                  clothingItems={clothingItems}
-                />
-              }
-            />
-            <Route
-              path="/profile"
-              element={
-                <Profile
-                  onSelectCard={handleSelectedCard}
-                  clothingItems={clothingItems}
-                  openAddClothesModal={handleOpenModal}
-                />
-              }
-            />
-          </Routes>
-          <Footer />
-          {modalOpened === 'new-clothes-modal' && (
-            <AddItemModal 
-              isOpen={true}
-              onClose={handleCloseModal}
-              onAddItem={handleSubmit}
-            />
-          )}
+    <CurrentTemperatureUnitContext.Provider
+      value={{ currentTemperatureUnit, handleToggleSwitchChange }}
+    >
+      <div className="page">
+        <Header locationData={location} openAddClothesModal={handleOpenModal} />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Main
+                weatherTemp={temp}
+                weatherType={weatherType}
+                onSelectCard={handleSelectedCard}
+                timeOfDay={timeOfDay()}
+                clothingItems={clothingItems}
+              />
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <Profile
+                onSelectCard={handleSelectedCard}
+                clothingItems={clothingItems}
+                openAddClothesModal={handleOpenModal}
+              />
+            }
+          />
+        </Routes>
+        <Footer />
+        {modalOpened === 'new-clothes-modal' && (
+          <AddItemModal 
+            isOpen={true}
+            onClose={handleCloseModal}
+            onAddItem={handleSubmit}
+          />
+        )}
 
-          {modalOpened === 'item-modal' && (
-            <ItemModal 
-              onClose={handleCloseModal} 
-              selectedCard={selectedCard} 
-              onDeleteClick={() => handleDeleteClick(selectedCard)}
-            />
-          )}
-          
-          {modalOpened === 'delete-confirmation-modal' && (
-            <DeleteConfirmationModal 
-              onClose={handleCloseModal}
-              onConfirm={handleCardDelete}
-            />
-          )}
-        </div>
-      </CurrentTemperatureUnitContext.Provider>
-    </>
+        {modalOpened === 'item-modal' && (
+          <ItemModal 
+            onClose={handleCloseModal} 
+            selectedCard={selectedCard} 
+            onDeleteClick={() => handleDeleteClick(selectedCard)}
+          />
+        )}
+        
+        {modalOpened === 'delete-confirmation-modal' && (
+          <DeleteConfirmationModal 
+            onClose={handleCloseModal}
+            onConfirm={handleCardDelete}
+          />
+        )}
+      </div>
+    </CurrentTemperatureUnitContext.Provider>
   );
 }
 

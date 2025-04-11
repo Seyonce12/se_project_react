@@ -10,28 +10,30 @@ export const checkResponse = (res) => {
   return Promise.reject(`Error: ${res.status}`);
 };
 
+// Reusable request function for all API calls
+function request(url, options) {
+  return fetch(url, options).then(checkResponse);
+}
+
 // Get all clothing items
 export const getItems = () => {
-  return fetch(`${baseUrl}/items`)
-    .then(checkResponse);
+  return request(`${baseUrl}/items`);
 };
 
 // Add a new clothing item
 export const addItem = ({ name, weather, imageUrl }) => {
-  return fetch(`${baseUrl}/items`, {
+  return request(`${baseUrl}/items`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({ name, weather, imageUrl })
-  })
-    .then(checkResponse);
+  });
 };
 
 // Delete a clothing item
 export const deleteItem = (id) => {
-  return fetch(`${baseUrl}/items/${id}`, {
+  return request(`${baseUrl}/items/${id}`, {
     method: 'DELETE',
-  })
-    .then(checkResponse);
+  });
 };
