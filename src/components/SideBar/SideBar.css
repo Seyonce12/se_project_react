@@ -13,9 +13,42 @@
   object-fit: cover;
 }
 
+.sidebar__avatar-placeholder {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Familjen Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: #333;
+}
+
 .sidebar__username {
   margin: 0;
   font-size: 20px;
   line-height: 25px;
   font-weight: 700;
+}
+
+.sidebar__edit-button,
+.sidebar__logout-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Familjen Grotesk', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.5);
+  text-decoration: underline;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar__edit-button:hover,
+.sidebar__logout-button:hover {
+  color: #000;
 }

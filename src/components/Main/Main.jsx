@@ -4,7 +4,7 @@ import { CurrentTemperatureUnitContext } from '../../contexts/CurrentTemperature
 import WeatherCard from '../WeatherCard/WeatherCard';
 import ItemCard from '../ItemCard/ItemCard';
 
-function Main({ weatherTemp, weatherType, onSelectCard, timeOfDay, clothingItems }) {
+function Main({ weatherTemp, weatherType, onSelectCard, timeOfDay, clothingItems, onCardLike  }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   
   // Handle both object and number formats for weatherTemp
@@ -45,7 +45,7 @@ function Main({ weatherTemp, weatherType, onSelectCard, timeOfDay, clothingItems
       </div>
       <section className="clothing">
         {filterCards.map((data) => (
-          <ItemCard key={data._id} data={data} onSelectCard={onSelectCard} />
+          <ItemCard key={data._id} data={data} onSelectCard={onSelectCard} onCardLike={onCardLike}/>
         ))}
       </section>
     </main>

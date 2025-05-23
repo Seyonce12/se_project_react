@@ -17,6 +17,10 @@ This React application helps users decide what to wear based on the current weat
 ## GitHub Pages
 This project is deployed on GitHub Pages and can be accessed at: https://seyonce12.github.io/se_project_react/
 
+## Backend Repository
+The backend API for this project can be found at: [WTWR Backend Repository](https://github.com/Seyonce12/se_project_express)
+
+
 ## Getting Started
 To run this project locally:
 ```

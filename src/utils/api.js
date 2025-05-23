@@ -22,10 +22,13 @@ export const getItems = () => {
 
 // Add a new clothing item
 export const addItem = ({ name, weather, imageUrl }) => {
+  const token = localStorage.getItem('jwt');
+
   return request(`${baseUrl}/items`, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
     },
     body: JSON.stringify({ name, weather, imageUrl })
   });
@@ -33,7 +36,31 @@ export const addItem = ({ name, weather, imageUrl }) => {
 
 // Delete a clothing item
 export const deleteItem = (id) => {
+  const token = localStorage.getItem('jwt');
   return request(`${baseUrl}/items/${id}`, {
     method: 'DELETE',
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  });
+};
+
+export const likeItem = (id) => {
+  const token = localStorage.getItem('jwt');
+  return request(`${baseUrl}/items/${id}/likes`, {
+    method: 'PUT',
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  });
+};
+
+export const unlikeItem = (id) => {
+  const token = localStorage.getItem('jwt');
+  return request(`${baseUrl}/items/${id}/likes`, {
+    method: 'DELETE',
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
   });
 };

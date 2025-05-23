@@ -107,3 +107,41 @@
 .header__add-clothes-btn:hover {
   opacity: 0.6;
 }
+
+.avatar__placeholder {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Familjen Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #333;
+}
+
+.header__auth-buttons {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.header__register-button,
+.header__login-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Familjen Grotesk', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 20px;
+  color: #000;
+  padding: 0;
+}
+
+.header__register-button:hover,
+.header__login-button:hover {
+  opacity: 0.6;
+}

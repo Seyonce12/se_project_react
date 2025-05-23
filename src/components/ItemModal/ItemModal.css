@@ -90,7 +90,10 @@
   color: #000;
 }
 
-.item__modal-delete-button {
+.modal__delete-button {
+  position: absolute;
+  bottom: 32px;
+  right: 32px;
   font-family: 'Familjen Grotesk', sans-serif;
   font-weight: 700;
   font-size: 16px;
@@ -100,9 +103,13 @@
   border: none;
   cursor: pointer;
   padding: 0;
-  margin-top: 20px;
+  margin: 0;
 }
 
-.item__modal-delete-button:hover {
+.modal__delete-button:hover {
   opacity: 0.7;
+}
+
+.modal__delete-button_hidden {
+  display: none;
 }
