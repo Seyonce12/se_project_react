@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import ItemCard from '../ItemCard/ItemCard';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
-function ClothesSection({ onSelectCard, clothingItems, openAddClothesModal }) {
+function ClothesSection({ onSelectCard, clothingItems, openAddClothesModal, onCardLike }) {
   const currentUser = useContext(CurrentUserContext);
 
   const userItems = clothingItems.filter(item => item.owner === currentUser._id);
@@ -22,7 +22,7 @@ function ClothesSection({ onSelectCard, clothingItems, openAddClothesModal }) {
       </div>
       <div className="clothes-section__items">
         {userItems.map((item) => (
-          <ItemCard key={item._id} data={item} onSelectCard={onSelectCard} />
+          <ItemCard key={item._id} data={item} onSelectCard={onSelectCard} onCardLike={onCardLike}/>
         ))}
       </div>
     </div>

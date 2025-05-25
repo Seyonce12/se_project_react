@@ -1,6 +1,5 @@
 import './ModalWithForm.css';
 import Modal from '../Modal/Modal';
-import useModalClose from '../../hooks/useModalClose';
 
 const ModalWithForm = ({
   children,
@@ -11,9 +10,6 @@ const ModalWithForm = ({
   handleSubmitForm,
   isOpen = true
 }) => {
-  // Use our custom hook
-  useModalClose(isOpen, onClose);
-
   return (
     <Modal name={name} onClose={onClose}>
       <h2 className="modal__title">{title}</h2>

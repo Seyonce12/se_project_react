@@ -195,33 +195,33 @@ function App() {
     setModalOpened('edit-profile-modal');
   };
 
-const handleRegister = (registerData, e) => {
-  if (e && e.preventDefault) {
-    e.preventDefault();
-  }
+  const handleRegister = (registerData, e) => {
+    if (e && e.preventDefault) {
+      e.preventDefault();
+    }
 
-  signup(registerData)
-    .then((user) => {
-      return signin({ email: user.email, password: registerData.password });
-    })
-    .then((res) => {
-      if (res.token) {
-        localStorage.setItem('jwt', res.token);
-        return getCurrentUser();
-      }
-    })
-    .then((user) => {
-      setCurrentUser(user);
-      setIsLoggedIn(true);
-      handleCloseModal();
-      if (e && e.target) {
-        e.target.reset();
-      }
-    })
-    .catch((err) => {
-      console.error('Registration failed:', err);
-    });
-};
+    signup(registerData)
+      .then((user) => {
+        return signin({ email: user.email, password: registerData.password });
+      })
+      .then((res) => {
+        if (res.token) {
+          localStorage.setItem('jwt', res.token);
+          return getCurrentUser();
+        }
+      })
+      .then((user) => {
+        setCurrentUser(user);
+        setIsLoggedIn(true);
+        handleCloseModal();
+        if (e && e.target) {
+          e.target.reset();
+        }
+      })
+      .catch((err) => {
+        console.error('Registration failed:', err);
+      });
+  };
 
   const handleLogin = (loginData, e) => {
     if (e && e.preventDefault) {
@@ -284,7 +284,7 @@ const handleRegister = (registerData, e) => {
             cards.map((item) => (item._id === id ? updatedCard : item))
           );
         })
-        .catch((err) => console.log(err))
+        .catch((err) => console.error(err))
       :
       unlikeItem(id, token)
         .then((updatedCard) => {
@@ -292,7 +292,7 @@ const handleRegister = (registerData, e) => {
             cards.map((item) => (item._id === id ? updatedCard : item))
           );
         })
-        .catch((err) => console.log(err));
+        .catch((err) => console.error(err));
   };
 
   return (
@@ -301,7 +301,7 @@ const handleRegister = (registerData, e) => {
     >
       <CurrentUserContext.Provider value={currentUser}>
         <div className="page">
-          <Header locationData={location} openAddClothesModal={handleOpenModal} isLoggedIn={isLoggedIn} onLoginClick={handleLoginModal} onRegisterClick={handleRegisterModal}/>
+          <Header locationData={location} openAddClothesModal={handleOpenModal} isLoggedIn={isLoggedIn} onLoginClick={handleLoginModal} onRegisterClick={handleRegisterModal} />
           <Routes>
             <Route
               path="/"
@@ -326,6 +326,7 @@ const handleRegister = (registerData, e) => {
                     openAddClothesModal={handleOpenModal}
                     onEditProfile={handleEditProfileModal}
                     onLogout={handleLogout}
+                    onCardLike={handleCardLike}
                   />
                 </ProtectedRoute>
               }

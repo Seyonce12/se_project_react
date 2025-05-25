@@ -8,7 +8,7 @@ const ItemModal = ({ onClose, selectedCard, onDeleteClick, isOpen = true }) => {
   useModalClose(isOpen, onClose);
   const currentUser = useContext(CurrentUserContext);
 
-  const isOwn = selectedCard.owner === currentUser._id;
+  const isOwn = selectedCard.owner === currentUser?._id;
 
   const itemDeleteButtonClassName = (
     `modal__delete-button ${isOwn ? '' : 'modal__delete-button_hidden'}`
